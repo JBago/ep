@@ -9,6 +9,7 @@
             <v-list-item
                 v-for="sensor in sensors"
                 :key="sensor.id"
+                :to="'/readings/'+sensor.id"
             >
                 <v-list-item-avatar>
                     <v-icon

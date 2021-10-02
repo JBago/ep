@@ -1,17 +1,17 @@
 let options = {
         chart: {
         id: 'chart1',
-        height: 130,
+        width: '100%',
         type: 'area',
         brush:{
-          target: 'chart2',
+          target: 'history',
           enabled: true
         },
         selection: {
           enabled: true,
           xaxis: {
-            min: 1632911048627,
-            max: 1632911460618
+            min:0,
+            max:0
           }
         },
       },
