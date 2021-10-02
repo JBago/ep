@@ -1,14 +1,8 @@
 let options = {
     chart: {
-      id: 'chart2',
+      id: 'basic',
       width: "100%",
       type: 'line',
-      events: {
-        scrolled: function(chartContext, { xaxis }) {
-          this.scroll=true;
-          console.log(this.scroll)
-        }
-      },
       animations: {
         enabled: true,
         speed: 300,
@@ -31,9 +25,9 @@ let options = {
           download: true,
           selection: false,
           zoom: false,
-          zoomin: true,
-          zoomout: true,
-          pan: true,
+          zoomin: false,
+          zoomout: false,
+          pan: false,
           reset: false | '<img src="/static/icons/reset.png" width="20">',
           customIcons: []
         }
@@ -41,13 +35,12 @@ let options = {
     },
     colors:['#008FFB', '#00E39690', '#9C27B0'],
     xaxis: {
-      range: 300000,
       type: 'datetime'
     },
     yaxis: [{
       labels: {
         formatter: function (value) {
-          return value + "°C";
+          return value;
         }
       }
     }],
