@@ -3,11 +3,8 @@
     <v-app>
         <v-app-bar class="app-bar" app>
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-            <v-toolbar-title>Placeholder</v-toolbar-title>
+            <v-toolbar-title>MeteoCharts</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn text rounded @click="this.login">
-                Login
-            </v-btn>
         </v-app-bar>
         <v-navigation-drawer
       v-model="drawer"
@@ -19,7 +16,7 @@
         dense
       >
         <v-list-item-group
-          active-class="deep-purple--text text--accent-4"
+          active-class="text--accent-4"
         >
           <v-list-item @click="$router.push({name: 'Home'})">
             <v-list-item-icon>
