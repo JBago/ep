@@ -46,7 +46,7 @@ let options = {
     }],
     legend: {
       onItemClick: {
-        toggleDataSeries: false
+        toggleDataSeries: true
       },
       onItemHover: {
         highlightDataSeries: true

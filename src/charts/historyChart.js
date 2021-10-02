@@ -13,11 +13,6 @@ let options = {
       type: 'datetime'
     },
     yaxis: [{
-      labels: {
-        formatter: function (value) {
-          return value + "°C";
-        }
-      }
     }],
     legend: {
       onItemClick: {

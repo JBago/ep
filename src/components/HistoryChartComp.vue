@@ -1,11 +1,9 @@
 <template>
   <div class="history">
-    <v-container>
       <v-card>
-          <apexchart ref="temp1" :options="history" :series="series"  height=350></apexchart>
-          <apexchart ref="temp2" :options="options" :series="series"  height=350></apexchart>
+          <apexchart ref="temp1" :options="history" :series="series"  height=300></apexchart>
+          <apexchart ref="temp2" :options="options" :series="series"  height=300></apexchart>
       </v-card>
-    </v-container>
   </div>
 </template>
 
