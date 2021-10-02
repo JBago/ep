@@ -10,6 +10,8 @@ import VueAxios from 'vue-axios'
 Vue.use(VueApexCharts)
 Vue.use(VueAxios, Axios);
 
+Axios.defaults.baseURL = 'https://ivanmarincic.com/ep/api';
+
 Vue.config.productionTip = false
 
 new Vue({
