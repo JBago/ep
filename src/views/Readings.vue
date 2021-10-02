@@ -68,7 +68,7 @@ export default {
     fetchData(){
       this.loading = true;
       this.data=[];
-      this.axios.get('http://www.ivanmarincic.com/ep/readings/' + this.$route.params.id + '?page=0&size=' + this.select)
+      this.axios.get('https://ivanmarincic.com/ep/readings/' + this.$route.params.id + '?page=0&size=' + this.select)
                 .then((response) => {
                     this.loading = false;
                     response.data.forEach(element => {
@@ -79,7 +79,7 @@ export default {
                     }])
                     this.lastTimestamp=this.data[this.select-1].timestamp;
                 })
-      this.axios.get('http://www.ivanmarincic.com/ep/sensor/' + this.$route.params.id)
+      this.axios.get('https://ivanmarincic.com/ep/sensor/' + this.$route.params.id)
                 .then((response) => {
                   this.$refs.temp.updateSeries([{
                         name: response.data.name
@@ -97,7 +97,7 @@ export default {
                 })
     },
     getLatestReading(){
-      this.axios.get('http://www.ivanmarincic.com/ep/readings/' + this.$route.params.id + '/latest')
+      this.axios.get('https://ivanmarincic.com/ep/readings/' + this.$route.params.id + '/latest')
           .then((response) => {
               if(this.lastTimestamp!=response.data.timestamp){
                 this.data.push([response.data.timestamp,response.data.value]);

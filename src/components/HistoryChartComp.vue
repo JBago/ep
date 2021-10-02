@@ -31,7 +31,7 @@ export default {
     fetchData(){
       this.loading = true;
       this.data=[];
-      this.axios.get('http://www.ivanmarincic.com/ep/readings/' + this.$route.params.id + '?page=0&size=' + 1000)
+      this.axios.get('https://ivanmarincic.com/ep/readings/' + this.$route.params.id + '?page=0&size=' + 1000)
                 .then((response) => {
                     this.loading = false;
                     response.data.forEach(element => {

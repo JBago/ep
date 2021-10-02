@@ -54,10 +54,10 @@ export default {
       this.data=[];
       this.series=[];
       let i=0;
-      this.axios.get('http://www.ivanmarincic.com/ep/sensor/all')
+      this.axios.get('https://ivanmarincic.com/ep/sensor/all')
                 .then((response) => {
                   response.data.forEach(element => {
-                    this.axios.get('http://www.ivanmarincic.com/ep/readings/' + element.id + '?page=0&size=' + this.select)
+                    this.axios.get('https://ivanmarincic.com/ep/readings/' + element.id + '?page=0&size=' + this.select)
                       .then((response) => {
                         const prom = new Promise((resolve, reject) => {
                         this.data[i]=[];
@@ -84,7 +84,7 @@ export default {
                 })
     },
     getLatestReading(id, name, num){
-      this.axios.get('http://www.ivanmarincic.com/ep/readings/' + id + '/latest')
+      this.axios.get('https://ivanmarincic.com/ep/readings/' + id + '/latest')
           .then((response) => {
               if(this.lastTimestamp!=response.data.timestamp){
                 this.data[num].push([response.data.timestamp,response.data.value]);

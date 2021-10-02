@@ -95,7 +95,7 @@ export default {
   },
   mounted() {
        this.loading = true;
-            this.axios.get('https://www.ivanmarincic.com/ep/sensor/all')
+            this.axios.get('https://ivanmarincic.com/ep/sensor/all')
                 .then((response) => {
                     this.sensors = response.data;
                     this.loading = false;
