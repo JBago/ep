@@ -2,7 +2,7 @@
   <layout>
   <div class="readings">
     <v-container>
-      <v-card id="chart" align="center">
+      <v-card id="chart" align="center" :loading="loading">
         <v-container style="padding: 20px">
           <apexchart ref="temp" :options="options" :series="series"  height=350></apexchart>
           <v-select
@@ -49,16 +49,14 @@ export default {
       size: [10,20,30],
       lastTimestamp: 0,
       series: [{
-        name: this.name,
-        data: this.data
-        }],
+        name: '',
+        data: []
+      }],
       history: false,
-      unit: '',
-      name: 'temperatura'
+      loading: false,
     }
   },
   mounted() {
-      this.loading = true;
       this.fetchData();
       setInterval(() => {
           this.getLatestReading();
@@ -94,6 +92,9 @@ export default {
                             }
                       }],
                     });
+                })
+                .finally(()=>{
+                  this.loading=false;
                 })
     },
     getLatestReading(){

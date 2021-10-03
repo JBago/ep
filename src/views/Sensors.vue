@@ -5,6 +5,7 @@
             subheader
             two-line
             max-width="1000"
+            :loading="loading"
         >
         <v-subheader inset>Sensors</v-subheader>
             <v-list-item
@@ -36,37 +37,35 @@
         v-model="show"
         transition="dialog-bottom-transition"
         width="500"
-      >
-        <v-card
-  elevation="2"
->
-            <v-card-title class="text-h5 grey lighten-2">
-                Information
-            </v-card-title>
-            <v-list-item two-line>
-                <v-list-item-content>
-                    <v-list-item-title>Name</v-list-item-title>
+        >
+            <v-card elevation="2">
+                <v-card-title class="text-h5 grey lighten-2">
+                    Information
+                </v-card-title>
+                <v-list-item two-line>
+                    <v-list-item-content>
+                        <v-list-item-title>Name</v-list-item-title>
                         <v-list-item-subtitle>{{selected.name}}</v-list-item-subtitle>
                     </v-list-item-content>
-            </v-list-item>
-            <v-list-item two-line>
-                <v-list-item-content>
-                    <v-list-item-title>Manufacturer</v-list-item-title>
+                </v-list-item>
+                <v-list-item two-line>
+                    <v-list-item-content>
+                        <v-list-item-title>Manufacturer</v-list-item-title>
                         <v-list-item-subtitle>{{selected.manufacturer}}</v-list-item-subtitle>
                     </v-list-item-content>
-            </v-list-item>
-            <v-list-item two-line>
-                <v-list-item-content>
-                    <v-list-item-title>Model</v-list-item-title>
+                </v-list-item>
+                <v-list-item two-line>
+                    <v-list-item-content>
+                        <v-list-item-title>Model</v-list-item-title>
                         <v-list-item-subtitle>{{selected.model}}</v-list-item-subtitle>
                     </v-list-item-content>
-            </v-list-item>
-            <v-list-item two-line>
-                <v-list-item-content>
-                    <v-list-item-title>Unit</v-list-item-title>
+                </v-list-item>
+                <v-list-item two-line>
+                    <v-list-item-content>
+                        <v-list-item-title>Unit</v-list-item-title>
                         <v-list-item-subtitle>{{selected.unit}}</v-list-item-subtitle>
                     </v-list-item-content>
-            </v-list-item>
+                </v-list-item>
             </v-card>
       </v-dialog>
     </div>
@@ -94,13 +93,14 @@ export default {
       }
   },
   mounted() {
-       this.loading = true;
-            this.axios.get('/sensor/all')
-                .then((response) => {
-                    this.sensors = response.data;
-                    this.loading = false;
-                    console.log(this.sensors);
-                })
+        this.loading = true;
+        this.axios.get('/sensor/all')
+            .then((response) => {
+                this.sensors = response.data;
+            })
+            .finally(()=>{
+                this.loading = false;
+            })
   }
 }
 </script>

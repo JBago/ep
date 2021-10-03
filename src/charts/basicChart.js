@@ -37,26 +37,10 @@ let options = {
     xaxis: {
         type: 'datetime'
     },
-    yaxis: [{
-        labels: {
-            formatter: function (value) {
-                return value;
-            }
-        }
-    }],
-    legend: {
-        onItemClick: {
-            toggleDataSeries: true
-        },
-        onItemHover: {
-            highlightDataSeries: true
-        },
-    },
-    markers: {
-        colors: ["#008FFB"]
-    },
     stroke: {
         curve: 'smooth',
+        lineCap: 'square',
+        width: 4.5
     },
 
 }

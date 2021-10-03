@@ -51,9 +51,6 @@
             drawer: false,
              }),
         methods: {
-            login: function() {
-                this.$router.push({name: "login"});
-            }
         },
         mounted() {
 

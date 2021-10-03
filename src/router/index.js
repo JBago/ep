@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
 import Sensors from '../views/Sensors.vue'
 import Readings from '../views/Readings.vue'
 
@@ -22,11 +21,6 @@ const routes = [
     path: '/readings/:id',
     name: 'Readings',
     component: Readings
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
   }
 ]
 

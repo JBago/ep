@@ -2,7 +2,7 @@
   <div class="history">
       <v-card>
         <v-overlay
-          :absolute="absolute"
+          :absolute="true"
           :value="loading"
         >
           <v-progress-circular

@@ -19,6 +19,8 @@ let options = {
     },
     stroke: {
       curve: 'smooth',
-    },
+      lineCap: 'square',
+      width: 4.5
+  },
   }
 export default options;
