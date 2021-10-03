@@ -24,14 +24,13 @@ export default {
     }
   },
   mounted() {
-      this.loading = true;
       this.fetchData();
   },
   methods: {
     fetchData(){
       this.loading = true;
       this.data=[];
-      this.axios.get('https://ivanmarincic.com/ep/readings/' + this.$route.params.id + '?page=0&size=' + 1000)
+      this.axios.get('/readings/' + this.$route.params.id + '?page=0&size=' + 1000)
                 .then((response) => {
                     this.loading = false;
                     response.data.forEach(element => {
