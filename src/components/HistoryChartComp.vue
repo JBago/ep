@@ -1,8 +1,17 @@
 <template>
   <div class="history">
       <v-card>
-          <apexchart ref="temp1" :options="history" :series="series"  height=300></apexchart>
-          <apexchart ref="temp2" :options="options" :series="series"  height=300></apexchart>
+        <v-overlay
+          :absolute="absolute"
+          :value="loading"
+        >
+          <v-progress-circular
+            indeterminate
+            color="primary"
+          ></v-progress-circular>
+        </v-overlay>
+        <apexchart ref="temp1" :options="history" :series="series"  height=300></apexchart>
+        <apexchart ref="temp2" :options="options" :series="series"  height=300></apexchart>
       </v-card>
   </div>
 </template>
@@ -21,6 +30,7 @@ export default {
       history: historyChart,
       data: [],
       series: [{data:this.data}],
+      loading: false
     }
   },
   mounted() {
@@ -37,6 +47,7 @@ export default {
                         this.data.unshift([element.timestamp,element.value])
                     });
                     this.$refs.temp1.updateSeries([{
+                        name: 'Value',
                         data: this.data
                     }]);
                     this.$refs.temp2.updateSeries([{
@@ -52,7 +63,9 @@ export default {
                           }
                         }
                     });
-                    console.log(this.data[999][0])
+                })
+                .finally(()=>{
+                  this.loading=false;
                 })
     },
   },

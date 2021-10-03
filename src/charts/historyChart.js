@@ -12,15 +12,7 @@ let options = {
     xaxis: {
       type: 'datetime'
     },
-    yaxis: [{
-    }],
-    legend: {
-      onItemClick: {
-        toggleDataSeries: false
-      },
-      onItemHover: {
-        highlightDataSeries: true
-      },
+    yaxis: {
     },
     markers: {
       colors: ["#008FFB"]
@@ -28,6 +20,5 @@ let options = {
     stroke: {
       curve: 'smooth',
     },
-    
   }
 export default options;
