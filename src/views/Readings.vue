@@ -54,13 +54,11 @@ export default {
       }],
       history: false,
       loading: false,
+      timeout: null
     }
   },
   mounted() {
       this.fetchData();
-      setInterval(() => {
-          this.getLatestReading();
-      },6000);
   },
   methods: {
     fetchData(){
@@ -76,6 +74,14 @@ export default {
                         data: this.data
                     }])
                     this.lastTimestamp=this.data[this.select-1].timestamp;
+                })
+                .then(()=>{
+                  this.$refs.temp.updateOptions({
+                        xaxis: {
+                          range:  this.data[this.select-1][0] - this.data[0][0]
+                      },
+                    })
+                  this.startReadingsCycle();
                 })
       this.axios.get('/sensor/' + this.$route.params.id)
                 .then((response) => {
@@ -97,18 +103,21 @@ export default {
                   this.loading=false;
                 })
     },
-    getLatestReading(){
+    startReadingsCycle() {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
       this.axios.get('/readings/' + this.$route.params.id + '/latest')
           .then((response) => {
               if(this.lastTimestamp!=response.data.timestamp){
                 this.data.push([response.data.timestamp,response.data.value]);
-                this.data.shift();
                 this.$refs.temp.updateSeries([{
                         data: this.data
                 }])
                 this.lastTimestamp=response.data.timestamp;
               }
           })
+          .finally(() => this.startReadingsCycle())
+      }, 3000)
     },
   },
 }

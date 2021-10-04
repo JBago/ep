@@ -5,15 +5,13 @@ let options = {
         type: 'line',
         animations: {
             enabled: true,
-            speed: 300,
-            easing: "easeinout",
+            easing: 'linear',
+            dynamicAnimation: {
+                speed: 500
+            },
             animateGradually: {
                 enabled: true,
                 delay: 150
-            },
-            dynamicAnimation: {
-                enabled: true,
-                speed: 300
             }
         },
         toolbar: {

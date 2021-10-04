@@ -59,6 +59,11 @@ export default {
               name: `${sensor.name} (${sensor.unit})`,
               data: readings[index].data.reverse().map(e => [e.timestamp, e.value]),
             }))
+            this.$refs.temp.updateOptions({
+                        xaxis: {
+                          range:  this.series[0].data[19][0] - this.series[0].data[0][0]
+                      },
+            })
             this.startReadingsCycle();
           })
           .finally(() => {
@@ -75,10 +80,10 @@ export default {
               this.series = this.series.map(sensor => {
                 const reading = readings.find(e => e.sensorID === sensor.id)
                 {
-                  sensor.data.shift();
+                  sensor.data.push([timestamp, reading.value]);
                   return {
                     id: sensor.id,
-                    data: [...sensor.data, [timestamp, reading.value]],
+                    data: sensor.data,
                     name: sensor.name,
                 }
                 }
