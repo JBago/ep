@@ -2,12 +2,22 @@
   <layout>
     <div class="sensors">
         <v-list
+            id="list"
             subheader
             two-line
             max-width="1000"
-            :loading="loading"
+            
         >
+        
+       
         <v-subheader inset>Sensors</v-subheader>
+        <v-list align="center">
+             <v-progress-circular
+            indeterminate
+            color="primary"
+            v-show="loading"
+          ></v-progress-circular>
+        </v-list>
             <v-list-item
                 v-for="sensor in sensors"
                 :key="sensor.id"
@@ -106,5 +116,9 @@ export default {
 </script>
 
 <style scoped>
-
+#list {
+  max-width: 640px;
+  margin: 35px auto;
+  padding: 10px auto;
+}
 </style>
